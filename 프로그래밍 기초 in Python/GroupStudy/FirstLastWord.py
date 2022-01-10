@@ -16,6 +16,7 @@ f = open('FirstLastWord.txt','r', encoding='UTF-8') # Brings Words that Computer
 sys_wdbook = [] # List of words that computer has
 game_wdbook = [] # List of words that used in game
 turn_count = 0 # How many turns went
+nxt_turn = ""
 
 for line in f : # Read the file that has the words
     sys_wdbook.append(line.strip())
@@ -31,15 +32,11 @@ while True: # Select who attacks first
     except ValueError: #Error exception while choosing the turns
         print("숫자를 입력해주세요.")
 
-while True: # Game starts
-    if int(turn) == 2 :
-        print("Game Ended!!")
-        exit()
 
-    user_input = input("세상에 존재하는 단어(2~3자) 하나를 입력해주세요 :") # User will input word
-
+while True: # Game first turn starts
+   
     if int(turn) == 0 : # User's First Attack
-        sys_wdbook_count = 0
+        user_input = input("세상에 존재하는 단어(2~3자) 하나를 입력해주세요 :") # User will input word
         if user_input == "2": 
             print("사용자에 의해 게임이 종료되었습니다.")
             exit()
@@ -51,11 +48,43 @@ while True: # Game starts
             if turn_count == 0: # 1st user's input
                 game_wdbook.append(user_input)
                 turn_count += 1
+                nxt_turn = "com"
+                break
 
-            elif turn_count > 0 and sys_input[-1] == user_input[0]: # User's input during game
+
+    elif int(turn) == 1: # Computer's First Attack
+        sys_input = sys_wdbook[randint(0,len(sys_wdbook)-1)]
+        print(sys_input)
+        game_wdbook.append(sys_input)
+        turn_count += 1
+        nxt_turn = "user"
+        break
+
+    
+    elif int(turn) == 2:
+        print("게임 종료!!")
+        exit()    
+
+
+
+
+while True: # Game starts
+    if nxt_turn == "user" :
+        user_input = input("세상에 존재하는 단어(2~3자) 하나를 입력해주세요 :") # User will input word
+        if user_input == "2":
+            update_computer_brain(game_wdbook, sys_wdbook) 
+            print("사용자에 의해 게임이 종료되었습니다.")
+            exit()
+
+        if len(user_input) > 3 or len(user_input) < 2:
+            print("글자수를 맞춰주세요.")
+
+        elif len(user_input) <= 3 and len(user_input) >= 2:
+            if turn_count > 0 and sys_input[-1] == user_input[0]: # User's input
                 if user_input not in game_wdbook :
                     game_wdbook.append(user_input)
                     turn_count += 1
+                    nxt_turn = "com"
                 elif user_input in game_wdbook:
                     print("이미 사용된 단어입니다.")
                     print(f"컴퓨터 입력 : {sys_input}")
@@ -63,38 +92,19 @@ while True: # Game starts
             elif turn_count > 0 and sys_input[-1] != user_input[0] :
                 print(f"{turn_count}번만에 제가 이겼습니다.")
                 exit()
-        
-            for index in sys_wdbook: # Computer input
+
+    elif nxt_turn == "com" :
+        sys_wdbook_count = 0
+        for index in sys_wdbook: # Computer input
                 sys_wdbook_count += 1
                 if index[0] == user_input[-1] and index not in game_wdbook: # Computer has the word that match
                     sys_input = index
                     print(f"컴퓨터 입력 : {sys_input}")
                     game_wdbook.append(sys_input)
                     turn_count += 1
+                    nxt_turn = "user"
                     break
                 elif sys_wdbook_count == len(sys_wdbook):
                     update_computer_brain(game_wdbook, sys_wdbook) # Update word to computer which it doesn't have
                     print(f"{turn_count}번만에 제가 졌습니다.")    
                     exit()
-
-        
-
-
-
-
-    elif int(turn) == 1: # Computer's First Attack
-        if turn_count == 0:
-            sys_input = sys_wdbook[randint(0,len(sys_wdbook)-1)]
-            print(sys_input)
-            game_wdbook.append(sys_input)
-            
-    
-            
-
-    
-    
-
-        
-        
-        
-        
