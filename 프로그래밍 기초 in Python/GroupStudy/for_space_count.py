@@ -7,4 +7,3 @@ for i in range(len(string)-1) :
         blank_count += 1
 
 print(f"Blank Space : {blank_count}")
-test work right now
