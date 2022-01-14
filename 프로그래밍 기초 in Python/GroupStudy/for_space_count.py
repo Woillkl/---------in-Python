@@ -1,7 +1,6 @@
-from pickletools import read_int4
-
-
 string = "This is NGL Transportation"
+print(string[0])
+print(string[1])
 
 blank_count = 0
 for i in range(len(string)-1) :
