@@ -1,6 +1,3 @@
-import this
-
-
 thisdict = {
     "사과" : "apple", 
     "바나나" : "banana", 
