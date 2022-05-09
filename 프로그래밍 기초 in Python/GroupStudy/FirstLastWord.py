@@ -8,8 +8,11 @@ def update_computer_brain(x, y):
                 f.write(f"{value}\n")
 
 
+# # GRAM
+# os.chdir('K:\\Python Group Study\\프로그래밍 기초 in Python\\GroupStudy')
+# LENOVO
+os.chdir('C:\\Users\\NGLGQ\Desktop\\PythonStudy\\프로그래밍 기초 in Python\\GroupStudy')
 
-os.chdir('K:\\Python Group Study\\프로그래밍 기초 in Python\\GroupStudy')
 
 f = open('FirstLastWord.txt','r', encoding='UTF-8') # Brings Words that Computer has
 
