@@ -20,6 +20,7 @@ with open('프로그래밍 기초 in Python\\파일 읽고 쓰기\\chicken.txt',
     
     for line in f:
         data = line.strip().split(": ")
+        print(data)
         revenue = int(data[1])  # 그날의 매출 # [0]에는 ?월 이 들어가고 [1]에는 금액이 들어가있음
 
         total_revenue += revenue

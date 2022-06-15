@@ -15,8 +15,15 @@ a : 추가모드(append) : 파일의 마지막에 새료운 내용을 추가할 
 a+ : 읽기 or 추가 모드(파일이 없으면 생성) => 기존 파일에 있던 데이터를 그대로 두고 마지막에 내용을 입력한다.
 """
 
-with open('new_file.txt', 'a+') as f:
-    f.write("Hello world!\n")
-    f.write("My name is Healy")
+# with open('new_file.txt', 'w') as f:
+#     f.write("Hello world!\n")
+#     f.write("My name is Healy")
 
 
+with open('new_file.txt', 'w') as f:
+    f.write("ABCD\n")
+    
+
+# with open('new_file.txt', 'a') as f:
+#     f.write("This is Append\n")
+    

@@ -16,13 +16,14 @@ with open('프로그래밍 기초 in Python\\파일 읽고 쓰기\\chicken.txt',
 # 상대 경로는 "내가 작업하는 위치를 기준"으로 경로가 결정된다.
 # 절대 경로는 "내가 작업하는 위치와 상관없이" 절대로 변하지 않는 경로이다.
 
-with open('프로그래밍 기초 in Python\\파일 읽고 쓰기\\chicken.txt', 'r', encoding='UTF-8') as f:
-    for line in f: 
-        # print(line) # 모든 줄이 출력 되게 된다. 한줄 씩 뛰어 나오는 이유는 엔터가 \n의 역활을 하기 때문
-        print(line.strip()) # strip 함수는 맨 앞과 맨 뒤에 있는 화이트 스페이스를 지워주는 역활을 한다. 이때문에 \n이 사라진다.
+# with open('프로그래밍 기초 in Python\\파일 읽고 쓰기\\chicken.txt', 'r', encoding='UTF-8') as f:
+#     for line in f: 
+#         # print(line) # 모든 줄이 출력 되게 된다. 한줄 씩 뛰어 나오는 이유는 엔터가 \n의 역활을 하기 때문
+#         print(line.strip()) # strip 함수는 맨 앞과 맨 뒤에 있는 화이트 스페이스를 지워주는 역활을 한다. 이때문에 \n이 사라진다.
         
 a = []
 with open('프로그래밍 기초 in Python\\파일 읽고 쓰기\\chicken.txt', 'r', encoding='UTF-8') as f:
     for line in f:
         a.append(line.strip().split(": ")) # split은 나온 값을 ()안에 들어간 기준으로 잘라서 출력시킨다.
 print(a)
+
